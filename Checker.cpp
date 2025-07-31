@@ -18,9 +18,9 @@ bool ChargeRateCheck(float chargeRate) {
 bool reportOutofrange(const string& name, bool status){
 if(status){
   cout << name << " out of range!" << endl;
-  return false
+  return false;
 }
-  return true
+  return true;
 }
 
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
