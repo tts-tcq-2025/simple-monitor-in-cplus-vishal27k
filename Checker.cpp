@@ -2,18 +2,28 @@
 #include <iostream>
 using namespace std;
 
+// Pure functions for individual checks
+bool TemperatureCheck(float temperature) {
+  return temperature < 0 || temperature > 45;
+}
+
+bool SocCheck(float soc) {
+  return soc < 20 || soc > 80;
+}
+
+bool ChargeRateCheck(float chargeRate) {
+  return chargeRate > 0.8;
+}
+
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
-  if(temperature < 0 || temperature > 45) {
+  if(TemperatureCheck(temperature)) {
     cout << "Temperature out of range!\n";
-    return false;
-  } else if(soc < 20 || soc > 80) {
+  } else if(SocCheck(soc)) {
     cout << "State of Charge out of range!\n";
-    return false;
-  } else if(chargeRate > 0.8) {
+  } else if(ChargeRateCheck(chargeRate)) {
     cout << "Charge Rate out of range!\n";
-    return false;
   }
-  return true;
+  return (!TemperatureCheck(temperature)) && (!SocCheck(soc)) && (!ChargeRateCheck(chargeRate));
 }
 
 int main() {
